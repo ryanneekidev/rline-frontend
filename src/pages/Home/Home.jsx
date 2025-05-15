@@ -8,14 +8,9 @@ function App () {
             const response = await fetch(`http://backend-test-production-2c47.up.railway.app/api/login`, {
                 method: 'POST',
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body: JSON.stringify(
-                    {
-                        username: 'rayan',
-                        password: 'rayan'
-                    }
-                )
+                body: `username=rayan&password=rayan`
             });
             const json = await response.json();
             console.log(json);
