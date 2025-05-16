@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useAuth } from "../../utilities/AuthProvider";
 
-function Home () {
+function Register () {
     const auth = useAuth();
 
-    const login = auth.login;
+    const register = auth.register;
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
 
     const handleUsernameChange = (e) => {
         setUsername((prev) => e.target.value)
@@ -15,6 +16,10 @@ function Home () {
 
     const handlePasswordChange = (e) => {
         setPassword((prev) => e.target.value)
+    }
+
+    const handleEmailChange = (e) => {
+        setEmail((prev) => e.target.value)
     }
 
     const fetchExample = async () => {
@@ -30,15 +35,16 @@ function Home () {
     return (
         <>
             <div>
-                <h1>Homepage</h1>
+                <h1>Register</h1>
                 <p>Current user: {auth.user.username} ({auth.user.connectivityStatus})</p>
                 <input onChange={handleUsernameChange} placeholder='Enter username'></input>
                 <input onChange={handlePasswordChange} placeholder='Enter password'></input>
-                <button onClick={ () => { login(username, password) } }>Login</button>
+                <input onChange={handleEmailChange} placeholder='Enter email'></input>
+                <button onClick={ () => { register({username: username, password: password, email: email}) } }>Register</button>
                 <button onClick={fetchExample}>Fetch</button>
             </div>
         </>
     );
 }
 
-export default Home;
+export default Register;

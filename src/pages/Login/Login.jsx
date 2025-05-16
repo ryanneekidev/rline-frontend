@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from "../../utilities/AuthProvider";
 
-function Home () {
+function Login () {
     const auth = useAuth();
 
     const login = auth.login;
@@ -30,7 +30,7 @@ function Home () {
     return (
         <>
             <div>
-                <h1>Homepage</h1>
+                <h1>Login</h1>
                 <p>Current user: {auth.user.username} ({auth.user.connectivityStatus})</p>
                 <input onChange={handleUsernameChange} placeholder='Enter username'></input>
                 <input onChange={handlePasswordChange} placeholder='Enter password'></input>
@@ -41,4 +41,4 @@ function Home () {
     );
 }
 
-export default Home;
+export default Login;
