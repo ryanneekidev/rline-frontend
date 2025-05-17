@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from "../../utilities/AuthProvider";
+import { Link } from 'react-router-dom';
 
 function Login () {
     const auth = useAuth();
@@ -17,9 +18,15 @@ function Login () {
         setPassword((prev) => e.target.value)
     }
 
-    const fetchExample = async () => {
+    const privateFetch = async () => {
         try {
-            const response = await fetch(`http://127.0.0.1:3000/api`);
+            const response = await fetch(`http://127.0.0.1:3000/api/private`, {
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${auth.token}`
+                }
+            });
             const json = await response.json();
             console.log(json);
         } catch (err) {
@@ -31,11 +38,17 @@ function Login () {
         <>
             <div>
                 <h1>Login</h1>
-                <p>Current user: {auth.user.username} ({auth.user.connectivityStatus})</p>
+                <p>Current user: {auth.user.username}</p>
                 <input onChange={handleUsernameChange} placeholder='Enter username'></input>
                 <input onChange={handlePasswordChange} placeholder='Enter password'></input>
                 <button onClick={ () => { login(username, password) } }>Login</button>
-                <button onClick={fetchExample}>Fetch</button>
+                <button onClick={privateFetch}>Private Fetch</button>
+                <button onClick={auth.logout}>Logout</button>
+                <Link to='/'>Home</Link>
+                <Link to='/register'>Register</Link>
+                <Link to='/login'>Login</Link>
+                <Link to='/private'>Private Route</Link>
+                <p>Token: {auth.token}</p>
             </div>
         </>
     );

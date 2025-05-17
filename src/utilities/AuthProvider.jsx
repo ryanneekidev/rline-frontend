@@ -1,13 +1,12 @@
 import { useContext, createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
-    const [user, setUser] = useState({
-        username: 'ryanneeki',
-        connectivityStatus: 'online'
-    })
+    const [user, setUser] = useState({});
+    const [token, setToken] = useState("");
 
     const login = async (username, password) => {
         try {
@@ -19,10 +18,16 @@ const AuthProvider = ({children}) => {
                 body: `username=${username}&password=${password}`
             });
             const json = await response.json();
-            console.log(json);
+            setToken((prev)=>json.token)
+            setUser(jwtDecode(json.token))
         } catch (err) {
             console.error(err)
         }
+    }
+
+    const logout = () => {
+        setUser({});
+        setToken("")
     }
 
     const register = async (creds) => {
@@ -42,7 +47,7 @@ const AuthProvider = ({children}) => {
     }
 
     return(
-        <AuthContext.Provider value={ {user, login, register} }>
+        <AuthContext.Provider value={ {user, token, login, logout, register} }>
             {children}
         </AuthContext.Provider>
     )
