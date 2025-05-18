@@ -23,6 +23,10 @@ function Register () {
         setEmail((prev) => e.target.value)
     }
 
+    const handleSubmit = (e) => {
+        register(username, password, email)
+    }
+
     const privateFetch = async () => {
         try {
             const response = await fetch(`http://127.0.0.1:3000/api/private`, {
@@ -41,20 +45,29 @@ function Register () {
 
     return (
         <>
-            <div>
-                <h1>Register</h1>
-                <p>Current user: {auth.user.username}</p>
-                <input onChange={handleUsernameChange} placeholder='Enter username'></input>
-                <input onChange={handlePasswordChange} placeholder='Enter password'></input>
-                <input onChange={handleEmailChange} placeholder='Enter email'></input>
-                <button onClick={ () => { register({username: username, password: password, email: email}) } }>Register</button>
-                <button onClick={privateFetch}>Private Fetch</button>
-                <button onClick={auth.logout}>Logout</button>
-                <Link to='/'>Home</Link>
-                <Link to='/register'>Register</Link>
-                <Link to='/login'>Login</Link>
-                <Link to='/private'>Private Route</Link>
-                <p>Token: {auth.token}</p>
+            <div className='register-container'>
+                <div className="brand-container">
+                    <p className="branding">Weclome to RLine!</p>
+                    <p className="branding-subtitle">Create your Account</p>
+                </div>
+                <div className="register-card-container">
+                    <div className="register-card">
+                        <div className="register-card-credentials-container">
+                            <label name="register-card-credentials-username-field" htmlFor="register-card-credentials-username-field" className="register-card-credentials-username-field-label">Username</label>
+                            <input onChange={handleUsernameChange} name="register-card-credentials-username-field" id="register-card-credentials-username-field" placeholder="Enter your username" type="text"></input>
+                            <label name="register-card-credentials-username-field" htmlFor="register-card-credentials-username-field" className="register-card-credentials-username-field-label">Email</label>
+                            <input onChange={handleEmailChange} name="register-card-credentials-username-field" id="register-card-credentials-username-field" placeholder="Enter your email" type="email"></input>
+                            <label name="register-card-credentials-password-field" htmlFor="register-card-credentials-password-field" className="register-card-credentials-password-field-label">Password</label>
+                            <input onChange={handlePasswordChange} name="register-card-credentials-password-field" id="register-card-credentials-password-field" placeholder="Enter your password" type="password"></input>
+                            <label name="register-card-credentials-confirm-password-field" htmlFor="register-card-credentials-password-field" className="register-card-credentials-confirm-password-field-label">Confirm Password</label>
+                            <input onChange={handlePasswordChange} name="register-card-credentials-confirm-password-field" id="register-card-credentials-password-field" placeholder="Enter your password" type="password"></input>
+                        </div>
+                        <div className="register-card-button-container">
+                            <p className="login-account-redirect">Already have an account? <Link to="/login">Login!</Link></p>
+                            <button className="register-card-button" onClick={handleSubmit}>Create</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     );

@@ -18,6 +18,11 @@ function Login () {
         setPassword((prev) => e.target.value)
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        login(username, password)
+    }
+
     const privateFetch = async () => {
         try {
             const response = await fetch(`http://127.0.0.1:3000/api/private`, {
@@ -36,19 +41,25 @@ function Login () {
 
     return (
         <>
-            <div>
-                <h1>Login</h1>
-                <p>Current user: {auth.user.username}</p>
-                <input onChange={handleUsernameChange} placeholder='Enter username'></input>
-                <input onChange={handlePasswordChange} placeholder='Enter password'></input>
-                <button onClick={ () => { login(username, password) } }>Login</button>
-                <button onClick={privateFetch}>Private Fetch</button>
-                <button onClick={auth.logout}>Logout</button>
-                <Link to='/'>Home</Link>
-                <Link to='/register'>Register</Link>
-                <Link to='/login'>Login</Link>
-                <Link to='/private'>Private Route</Link>
-                <p>Token: {auth.token}</p>
+            <div className='login-container'>
+                <div className="brand-container">
+                    <p className="branding">Weclome to RLine!</p>
+                    <p className="branding-subtitle">Login to your Account</p>
+                </div>
+                <div className="login-card-container">
+                    <div className="login-card">
+                        <div className="login-card-credentials-container">
+                            <label name="login-card-credentials-username-field" htmlFor="login-card-credentials-username-field" className="login-card-credentials-username-field-label">Username</label>
+                            <input onChange={handleUsernameChange} id="login-card-credentials-username-field" placeholder="Enter your username" type="text"></input>
+                            <label name="login-card-credentials-password-field" htmlFor="login-card-credentials-password-field" className="login-card-credentials-password-field-label">Password</label>
+                            <input onChange={handlePasswordChange} id="login-card-credentials-password-field" placeholder="Enter your password" type="password"></input>
+                        </div>
+                        <div className="login-card-button-container">
+                            <p className="create-account-redirect">Don't have an account? <Link to="/register">Create one!</Link></p>
+                            <button className="login-card-button" onClick={handleSubmit}>Login</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     );
