@@ -59,6 +59,13 @@ function Login () {
                             <button className="login-card-button" onClick={handleSubmit}>Login</button>
                         </div>
                     </div>
+                    {auth.loginError !== "" ? 
+                        (
+                            <div className="login-card-error-card">{auth.loginError}</div>
+                        ) : (
+                            <></>
+                        )
+                    } 
                 </div>
             </div>
         </>

@@ -112,7 +112,7 @@
 }
 
 #login-card-credentials-username-field:focus, #login-card-credentials-password-field:focus{
-    border-width: 2px;
+    border-width: 1px;
     border-image: linear-gradient(to right, #fe938b, #6ebeed, #B0F2B4) 1;
     border-radius: 0.25rem;
 }
@@ -128,19 +128,23 @@
     grid-row-start: 2;
     grid-row-end: 3;
 }
+*/
 
 .login-card-error-card{
-    width: 100%;
-    height: 100%;
     background-color: #F21B3F;
     color: white;
     border-radius: 0.5rem;
+
+    position: fixed;
+
+    top: 1rem;
+
+    padding: 1rem;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
-*/
 
 .login-card-button-container{
     display: flex;
