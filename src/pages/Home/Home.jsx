@@ -20,7 +20,7 @@ function Home () {
 
     const privateFetch = async () => {
         try {
-            const response = await fetch(`http://127.0.0.1:3000/api/private`, {
+            const response = await fetch(`http://backend-test-production-2c47.up.railway.app/api/private`, {
                 method: 'GET',
                 headers: {
                     "Content-Type": "application/json",
