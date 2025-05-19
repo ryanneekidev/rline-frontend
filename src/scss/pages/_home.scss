@@ -1,0 +1,9 @@
+.home-container{
+    display: grid;
+    grid-template-rows: 4rem 1fr;
+}
+
+.home-main-area{
+    grid-row-start: 2;
+    grid-row-end: 3;
+}

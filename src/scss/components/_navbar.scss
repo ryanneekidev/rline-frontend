@@ -1,0 +1,32 @@
+.navbar{
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #018E42;
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.rline-logo-link{
+    font-weight: bold;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.navbar-profile-link, .navbar-create-link, .navbar-login-link, .navbar-register-link{
+    color: #FFFFFF;
+    padding-left: 1rem;
+    text-decoration: none;
+}
+
+.rline-logo-link:visited, .navbar-profile-link:visited, .navbar-create-link:visited, .navbar-login-link:visited, .navbar-register-link:visited{
+    font-weight: bold;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
