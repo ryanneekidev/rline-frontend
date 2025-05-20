@@ -22,22 +22,7 @@ function Login () {
         e.preventDefault();
         login(username, password)
     }
-
-    const privateFetch = async () => {
-        try {
-            const response = await fetch(`http://backend-test-production-2c47.up.railway.app/api/private`, {
-                method: 'GET',
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${auth.token}`
-                }
-            });
-            const json = await response.json();
-            console.log(json);
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    
 
     return (
         <>

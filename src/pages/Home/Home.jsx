@@ -28,7 +28,7 @@ function Home () {
     }
 
     const getPosts = async () => {
-        const response = await fetch('http://127.0.0.1:3000/api/posts', {
+        const response = await fetch(`http://127.0.0.1:3000/api/posts`, {
             method: 'GET',
         })
         const res = await response.json();
@@ -49,6 +49,7 @@ function Home () {
             auth.user.like = res.updatedLikes;
             console.log(res)
             getPosts()
+            navigate('/')
         } else {
             navigate('/login')
         }
@@ -67,6 +68,7 @@ function Home () {
             auth.user.like = res.updatedLikes;
             console.log(res)
             getPosts()
+            navigate('/')
         } else {
             navigate('/login')
         }
@@ -81,7 +83,7 @@ function Home () {
     }
 
     const logUser = () => {
-        console.log(auth.user);
+        console.log(auth.token);
     }
 
     useEffect(() => { getPosts() }, [])
@@ -94,11 +96,11 @@ function Home () {
                     <button onClick={logUser}>Log User</button>
                     {
                         posts.map( (post, index) => 
-                            auth.user.token ? (
-                                auth.user.like.some((like) => like.postId === post.id) ? (
-                                    <Card key={index} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Liked" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => commentPost(post.id)} likeAction={() => dislikePost(post.id, auth.user.like.find((like) => like.postId === post.id).id)} />
+                            auth.token ? (
+                                auth.user.like.some(like => like.postId === post.id) ? (
+                                    <Card key={index} text={"post is liked"} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Liked" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => commentPost(post.id)} likeAction={() => dislikePost(post.id, auth.user.like.find((like) => like.postId === post.id).id)} />
                                 ) : (
-                                    <Card key={index} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Like" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => commentPost(post.id)} likeAction={() => likePost(post.id)} />
+                                    <Card key={index} text={"post is not liked"} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Like" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => commentPost(post.id)} likeAction={() => likePost(post.id)} />
                                 )
                             ) : (
                                 <Card key={index} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Like" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => commentPost(post.id)} likeAction={() => likePost(post.id)} />

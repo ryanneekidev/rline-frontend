@@ -2,6 +2,7 @@ function Card(props) {
     return (
         <>
             <div className="card">
+                <p>{props.text}</p>
                 <div className="card-title-section">
                     <p className="card-post-title">{props.postTitle}</p>
                     <p className="card-post-author">{props.postAuthor}</p>
