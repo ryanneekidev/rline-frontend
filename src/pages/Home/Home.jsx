@@ -74,12 +74,8 @@ function Home () {
         }
     }
 
-    const commentPost = (postId) => {
-        if (auth.token !== '') {
-            navigate(`/posts?postId=${postId}`)
-        } else {
-            navigate('/login')
-        }
+    const navigateToPost = (postId) => {
+        navigate(`/posts?postId=${postId}`)
     }
 
     const logUser = () => {
@@ -98,12 +94,12 @@ function Home () {
                         posts.map( (post, index) => 
                             auth.token ? (
                                 auth.user.like.some(like => like.postId === post.id) ? (
-                                    <Card key={index} text={"post is liked"} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Liked" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => commentPost(post.id)} likeAction={() => dislikePost(post.id, auth.user.like.find((like) => like.postId === post.id).id)} />
+                                    <Card key={index} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Liked" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => navigateToPost(post.id)} likeAction={() => dislikePost(post.id, auth.user.like.find((like) => like.postId === post.id).id)} />
                                 ) : (
-                                    <Card key={index} text={"post is not liked"} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Like" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => commentPost(post.id)} likeAction={() => likePost(post.id)} />
+                                    <Card key={index} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Like" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => navigateToPost(post.id)} likeAction={() => likePost(post.id)} />
                                 )
                             ) : (
-                                <Card key={index} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Like" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => commentPost(post.id)} likeAction={() => likePost(post.id)} />
+                                <Card key={index} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Like" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => navigateToPost(post.id)} likeAction={() => likePost(post.id)} />
                             )
                         )
                     }

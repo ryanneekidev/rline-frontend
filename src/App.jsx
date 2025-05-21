@@ -6,6 +6,7 @@ import Private from './pages/Private/Private';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Create from './pages/Create/Create';
+import SinglePost from './pages/SinglePost/SinglePost';
 import PrivateRoute from './utilities/PrivateRoute';
 import PublicRoute from './utilities/PublicRoute';
 
@@ -24,6 +25,7 @@ function App() {
 						<Route element={<PrivateRoute />}>
 							<Route path='/create' element={<Create />} />
 						</Route>
+						<Route path='/posts' element={<SinglePost />} />
 						<Route element={<PublicRoute />}>
 							<Route path='/login' element={<Login />} />
 						</Route>
