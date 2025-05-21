@@ -15,8 +15,9 @@ const AuthProvider = ({children}) => {
 
     const login = async (username, password) => {
         try {
+            setRegisterError("")
             setLoginError("");
-            const response = await fetch(`http://127.0.0.1:3000/api/login`, {
+            const response = await fetch(`http://backend-test-production-2c47.up.railway.app/api/login`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
@@ -28,6 +29,7 @@ const AuthProvider = ({children}) => {
             if(json.token){
                 setToken((prev)=>json.token);
                 setUser(jwtDecode(json.token));
+                setRegisterError("")
                 setLoginError("");
                 return;
             }
@@ -43,6 +45,7 @@ const AuthProvider = ({children}) => {
         if(token!==""&&user){
             setUser({});
             setToken("");
+            setRegisterError("")
             setLoginError("");
             navigate('/login')
         }
@@ -51,7 +54,8 @@ const AuthProvider = ({children}) => {
     const register = async (username, password, confirmedPassword, email) => {
         try {
             setRegisterError("")
-            const response = await fetch("http://127.0.0.1:3000/api/register", {
+            setLoginError("");
+            const response = await fetch("http://backend-test-production-2c47.up.railway.app/api/register", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -63,6 +67,7 @@ const AuthProvider = ({children}) => {
             if(json.pass){
                 navigate('/login')
                 setRegisterError("")
+                setLoginError("");
                 return;
             }
 

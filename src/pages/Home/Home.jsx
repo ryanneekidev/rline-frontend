@@ -28,7 +28,7 @@ function Home () {
     }
 
     const getPosts = async () => {
-        const response = await fetch(`http://127.0.0.1:3000/api/posts`, {
+        const response = await fetch(`http://backend-test-production-2c47.up.railway.app/api/posts`, {
             method: 'GET',
         })
         const res = await response.json();
@@ -38,7 +38,7 @@ function Home () {
 
     const likePost = async (postId) => {
         if (auth.token !== '') {
-            const response = await fetch("http://127.0.0.1:3000/api/posts/like", {
+            const response = await fetch("http://backend-test-production-2c47.up.railway.app/api/posts/like", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -57,7 +57,7 @@ function Home () {
 
     const dislikePost = async (postId, likeId) => {
         if (auth.token !== '') {
-            const response = await fetch("http://127.0.0.1:3000/api/posts/dislike", {
+            const response = await fetch("http://backend-test-production-2c47.up.railway.app/api/posts/dislike", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
