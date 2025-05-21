@@ -37,7 +37,7 @@ function Create() {
 
     const createPost = async () => {
         if (post.title !== "" && post.content !== "") {
-            const response = await fetch('http://127.0.0.1:3000/api/posts', {
+            const response = await fetch('http://backend-test-production-2c47.up.railway.app/api/posts', {
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer ' + auth.token,
