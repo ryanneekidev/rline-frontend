@@ -30,7 +30,7 @@ function Login () {
             <div className='login-container'>
                 <Navbar />
                 <div className='login-container-main-area'>
-                    <p className="header">Sign In to RLine</p>
+                    <p className="login-header">Sign In to RLine</p>
                     <div className='login-card'>
                         <div className="login-card-creds-section">
                             <label htmlFor="login-card-username-field" className='login-card-username-label'>Username</label>
@@ -40,7 +40,7 @@ function Login () {
                         </div>
                         <button className='login-card-submit-button' onClick={handleSubmit}>Sign In</button>
                     </div>
-                    <div className="bottom-container">
+                    <div className="login-bottom-container">
                         <p>Don't have an account?</p>
                         <Link to="/register" className="register-redirect">Create one!</Link>
                     </div>
