@@ -7,6 +7,16 @@
     height: 100vh;
 }
 
+.register-form{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
 .register-container-main-area{
     grid-row-start: 2;
     grid-row-end: 3;
@@ -25,7 +35,7 @@
     justify-content: space-between;
 
     width: 400px;
-    height: 520px;
+    height: 540px;
 
     border: 1px solid #E0E0E0;
     border-radius: 10px;
@@ -67,6 +77,25 @@
     border-radius: 10px;
 
     padding-left: 1rem;
+
+    font-size: 1rem;
+}
+
+#register-card-username-field:invalid, #register-card-password-field:invalid, #register-card-email-field:invalid, #register-card-confirm-password-field:invalid{
+    border: 1px solid #e8687f;
+}
+
+#register-card-username-field:empty, #register-card-password-field:empty, #register-card-email-field:empty, #register-card-confirm-password-field:empty{
+    border: 1px solid #E0E0E0;
+}
+
+
+#register-card-username-field:focus:invalid, #register-card-password-field:focus:invalid, #register-card-email-field:focus:invalid, #register-card-confirm-password-field:focus:invalid{
+    border: 1px solid #e8687f;
+}
+
+#register-card-username-field:focus:empty, #register-card-password-field:focus:empty, #register-card-email-field:focus:empty, #register-card-confirm-password-field:focus:empty{
+    border: 1px solid #BDBDBD;
 }
 
 .register-card-username-label{
@@ -86,6 +115,7 @@
     background-color: #EBEBEB;
     border: 1px solid #BDBDBD;
 }
+
 
 .register-header{
     font-size: 1.5rem;

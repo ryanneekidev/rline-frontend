@@ -1,3 +1,35 @@
+.error-card{
+    position: absolute;
+    top: 80px;
+
+    background-color: #D90429;
+    color: #FFFFFF;
+
+    width: 400px;
+    height: fit-content;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    padding-top: 20px;
+    padding-bottom: 20px; 
+
+    border-radius: 10px;
+
+    border: 1px solid #C30425;
+
+    transition: background-color 25ms ease-in;
+}
+
+.error-card:hover{
+    background-color: #C30425;
+    border: 1px solid #AE0321;
+}
+
 .login-container{
     display: grid;
     grid-template-columns: 1fr;
@@ -31,6 +63,16 @@
     border-radius: 10px;
 
     padding: 9px;
+}
+
+.login-form{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
 }
 
 .login-card-creds-section{
@@ -67,6 +109,8 @@
     border-radius: 10px;
 
     padding-left: 1rem;
+
+    font-size: 1rem;
 }
 
 .login-card-username-label{

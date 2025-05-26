@@ -55,26 +55,32 @@ function Register () {
             <div className='register-container'>
                 <Navbar />
                 <div className='register-container-main-area'>
+                    {
+                        auth.registerError !== "" ? (
+                            <div className="error-card">{auth.registerError}</div>
+                        ) : (
+                            <></>
+                        )
+                    }
                     <p className="register-header">Create Your RLine Account</p>
                     <div className='register-card'>
-                        <div className="register-card-creds-section">
-                            <label htmlFor="register-card-username-field" className='register-card-username-label'>Username</label>
-                            <input type='text' id="register-card-username-field" onChange={handleUsernameChange}></input>
-
-                            <label htmlFor="register-card-email-field" className='register-card-email-label'>Email Address</label>
-                            <input type='email' id="register-card-email-field" onChange={handleEmailChange}></input>
-
-                            <label htmlFor="register-card-password-field" className='register-card-password-label'>Password</label>
-                            <input type='password' id="register-card-password-field" onChange={handlePasswordChange}></input>
-
-                            <label htmlFor="register-card-confirm-password-label" className='register-card-confirm-password-label'>Confirm Password</label>
-                            <input type='password' id="register-card-confirm-password-field" onChange={handleConfirmedPasswordChange}></input>
-                        </div>
-                        <button className='register-card-submit-button' onClick={handleSubmit}>Sign Up</button>
+                        <form className='register-form' onSubmit={handleSubmit}>
+                            <div className="register-card-creds-section">
+                                <label htmlFor="register-card-username-field" className='register-card-username-label'>Username</label>
+                                <input type='text' id="register-card-username-field" required={true} onChange={handleUsernameChange}></input>
+                                <label htmlFor="register-card-email-field" className='register-card-email-label'>Email Address</label>
+                                <input type='email' id="register-card-email-field" required={true} onChange={handleEmailChange}></input>
+                                <label htmlFor="register-card-password-field" className='register-card-password-label'>Password</label>
+                                <input type='password' id="register-card-password-field" required={true} onChange={handlePasswordChange}></input>
+                                <label htmlFor="register-card-confirm-password-label" className='register-card-confirm-password-label'>Confirm Password</label>
+                                <input type='password' id="register-card-confirm-password-field" required={true} onChange={handleConfirmedPasswordChange}></input>
+                            </div>
+                            <button className='register-card-submit-button' type='submit'>Sign Up</button>
+                        </form>
                     </div>
                     <div className="register-bottom-container">
                         <p>Already have an account?</p>
-                        <Link to="/login" className="login-redirect">Sign In Instead!</Link>
+                        <Link to="/login" className="login-redirect" onClick={auth.clearAuthErrors}>Sign In Instead!</Link>
                     </div>
                 </div>
             </div>
