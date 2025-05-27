@@ -36,7 +36,7 @@ function Register () {
 
     const privateFetch = async () => {
         try {
-            const response = await fetch(`http://backend-test-production-2c47.up.railway.app/api/private`, {
+            const response = await fetch(`http://139.59.224.208:3000/api/private`, {
                 method: 'GET',
                 headers: {
                     "Content-Type": "application/json",

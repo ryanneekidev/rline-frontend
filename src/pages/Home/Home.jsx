@@ -13,7 +13,7 @@ function Home () {
 
     const privateFetch = async () => {
         try {
-            const response = await fetch(`http://backend-test-production-2c47.up.railway.app/api/private`, {
+            const response = await fetch(`http://139.59.224.208:3000/api/private`, {
                 method: 'GET',
                 headers: {
                     "Content-Type": "application/json",
@@ -28,7 +28,7 @@ function Home () {
     }
 
     const getPosts = async () => {
-        const response = await fetch(`http://backend-test-production-2c47.up.railway.app/api/posts`, {
+        const response = await fetch(`http://139.59.224.208:3000/api/posts`, {
             method: 'GET',
         })
         const res = await response.json();
@@ -38,7 +38,7 @@ function Home () {
 
     const likePost = async (postId) => {
         if (auth.token !== '') {
-            const response = await fetch("http://backend-test-production-2c47.up.railway.app/api/posts/like", {
+            const response = await fetch("http://139.59.224.208:3000/api/posts/like", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -57,7 +57,7 @@ function Home () {
 
     const dislikePost = async (postId, likeId) => {
         if (auth.token !== '') {
-            const response = await fetch("http://backend-test-production-2c47.up.railway.app/api/posts/dislike", {
+            const response = await fetch("http://139.59.224.208:3000/api/posts/dislike", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
