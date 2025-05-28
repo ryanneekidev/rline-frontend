@@ -21,7 +21,7 @@ const AuthProvider = ({children}) => {
     const login = async (username, password) => {
         try {
             clearAuthErrors()
-            const response = await fetch(`http://139.59.224.208:3000/api/login`, {
+            const response = await fetch(`http://backend-test-production-2c47.up.railway.app/api/login`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
@@ -56,7 +56,7 @@ const AuthProvider = ({children}) => {
     const register = async (username, password, confirmedPassword, email) => {
         try {
             clearAuthErrors()
-            const response = await fetch("http://139.59.224.208:3000/api/register", {
+            const response = await fetch("http://backend-test-production-2c47.up.railway.app/api/register", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'

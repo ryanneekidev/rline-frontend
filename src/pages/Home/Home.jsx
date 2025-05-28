@@ -13,7 +13,7 @@ function Home () {
 
     const privateFetch = async () => {
         try {
-            const response = await fetch(`http://139.59.224.208:3000/api/private`, {
+            const response = await fetch(`http://backend-test-production-2c47.up.railway.app/api/private`, {
                 method: 'GET',
                 headers: {
                     "Content-Type": "application/json",
@@ -28,7 +28,7 @@ function Home () {
     }
 
     const getPosts = async () => {
-        const response = await fetch(`http://139.59.224.208:3000/api/posts`, {
+        const response = await fetch(`http://backend-test-production-2c47.up.railway.app/api/posts`, {
             method: 'GET',
         })
         const res = await response.json();
@@ -38,7 +38,7 @@ function Home () {
 
     const likePost = async (postId) => {
         if (auth.token !== '') {
-            const response = await fetch("http://139.59.224.208:3000/api/posts/like", {
+            const response = await fetch("http://backend-test-production-2c47.up.railway.app/api/posts/like", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -57,7 +57,7 @@ function Home () {
 
     const dislikePost = async (postId, likeId) => {
         if (auth.token !== '') {
-            const response = await fetch("http://139.59.224.208:3000/api/posts/dislike", {
+            const response = await fetch("http://backend-test-production-2c47.up.railway.app/api/posts/dislike", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -89,20 +89,30 @@ function Home () {
             <div className="home-container">
                 <Navbar />
                 <div className="home-main-area">
-                    <button onClick={logUser}>Log User</button>
-                    {
-                        posts.map( (post, index) => 
+                    <div className="posts-area">
+                        {/* <button onClick={logUser}>Log User</button> */}
+                        {
                             auth.token ? (
-                                auth.user.like.some(like => like.postId === post.id) ? (
-                                    <Card key={index} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Liked" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => navigateToPost(post.id)} likeAction={() => dislikePost(post.id, auth.user.like.find((like) => like.postId === post.id).id)} />
+                                <h1 className="welcome-header">Welcome back, {auth.user.username}</h1>
+                            ) : (
+                                <h1 className="welcome-header">Currenly browsing as a guest. Please sign in to like and post comments.</h1>
+                            )
+                        }
+                        <h1 className="latest-posts">Latest posts</h1>
+                        {
+                            posts.map( (post, index) =>
+                                auth.token ? (
+                                    auth.user.like.some(like => like.postId === post.id) ? (
+                                        <Card key={index} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Liked" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => navigateToPost(post.id)} likeAction={() => dislikePost(post.id, auth.user.like.find((like) => like.postId === post.id).id)} />
+                                    ) : (
+                                        <Card key={index} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Like" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => navigateToPost(post.id)} likeAction={() => likePost(post.id)} />
+                                    )
                                 ) : (
                                     <Card key={index} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Like" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => navigateToPost(post.id)} likeAction={() => likePost(post.id)} />
                                 )
-                            ) : (
-                                <Card key={index} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Like" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => navigateToPost(post.id)} likeAction={() => likePost(post.id)} />
                             )
-                        )
-                    }
+                        }
+                    </div>
                 </div>
             </div>
         </>
