@@ -13,9 +13,17 @@
 
     display: flex;
     flex-direction: column;
+
+    padding: 30px;
 }
 
-.create-title, .create-content {
+.post-input-container{
+    display: flex;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.comment-input-field{
     height: 44px;
     border: 1px solid #E0E0E0;
 
@@ -24,28 +32,17 @@
     padding-left: 1rem;
 
     font-size: 1rem;
+    width: 100%;
 }
 
-.create-title:focus, .create-content:focus{
+.comment-input-field:focus{
     outline: none;
     background-color: #EBEBEB;
     border: 1px solid #BDBDBD;
 }
 
-.create-new-title{
-    margin-bottom: 24px;
-}
-
-.title, .content{
-    margin-bottom: 12px;
-}
-
-.create-title, .create-content{
-    margin-bottom: 24px;
-}
-
-.create-post-button{
-    align-self: flex-end;
+.submit-comment-button{
+    justify-self: flex-end;
     border: none;
 
     background-color: #D81159;
@@ -53,15 +50,23 @@
     font-size: 1rem;
     font-weight: 600;
 
+    margin-left: 10px;
+
     color: #FFFFFF;
-    padding: 10px;
+
+    padding-left: 20px;
+    padding-right: 20px;
 
     border-radius: 10px;
 
     transition: background-color 25ms ease-in;
 }
 
-.create-post-button:hover{
+.submit-comment-button:hover{
     cursor: pointer;
     background-color: #C20F50;
+}
+
+.comments-title{
+    margin-bottom: 20px;
 }

@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../utilities/AuthProvider";
 import Navbar from "../../components/Navbar/Navbar";
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime'
+dayjs.extend(relativeTime);
 
 function SinglePost() {
     const [post, setPost] = useState();
@@ -78,16 +81,33 @@ function SinglePost() {
                     {
                         post ? (
                             <>
-                                <input placeholder="Your comment" onChange={handleCommentContentChange} value={commentContent}></input>
-                                <button onClick={handleSubmit}>Post comment</button>
-                                <h1>{post.title}</h1>
-                                <p>{post.content}</p>
-                                <h1>Comments</h1>
+                                <div className="post-container">
+                                    <div className="card-metadata-section">
+                                        <p className="card-post-author">{post.author.username}</p>
+                                        <p className="card-post-date">{dayjs(post.createdAt).from(dayjs())}</p>
+                                    </div>
+                                    <div className="card-title-section">
+                                        <p className="card-post-title">{post.title}</p>
+                                    </div>
+                                    <div className="card-content-section">
+                                        <p className="card-content">{post.content}</p>
+                                    </div>
+                                </div>
+                                <div className="post-input-container">
+                                    <input className="comment-input-field" placeholder="Your comment" onChange={handleCommentContentChange} value={commentContent}></input>
+                                    <button className="submit-comment-button" onClick={handleSubmit}>Post</button>
+                                </div>
+                                <h1 className="comments-title">Comments</h1>
                                 {
                                     post.comments.map( (comment, index)  => 
-                                        <div key={index} style={{style: "1px solid black"}}>
-                                            <p>{comment.author.username} ({comment.createdAt})</p>
-                                            <p>{comment.content}</p>
+                                        <div key={index} className="post-container">
+                                            <div className="card-metadata-section">
+                                                <p className="card-post-author">{comment.author.username}</p>
+                                                <p className="card-post-date">{dayjs(post.createdAt).from(dayjs())}</p>
+                                            </div>
+                                            <div className="card-content-section">
+                                                <p className="card-content">{comment.content}</p>
+                                            </div>
                                         </div>
                                     )
                                 }
