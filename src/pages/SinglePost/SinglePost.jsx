@@ -18,7 +18,7 @@ function SinglePost() {
 
     const getPost = async (postId) => {
         try {
-            const response = await fetch("http://backend-test-production-2c47.up.railway.app/api/post", {
+            const response = await fetch("https://api.ryanneeki.xyz/post", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -39,7 +39,7 @@ function SinglePost() {
     const postComment = async () => {
         try {
             if (auth.token !== '') {
-                const response = await fetch("http://backend-test-production-2c47.up.railway.app/api/comment", {
+                const response = await fetch("https://api.ryanneeki.xyz/comment", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
