@@ -13,10 +13,14 @@ const AuthProvider = ({children}) => {
 
     const navigate = useNavigate();
 
+    const clearAuthErrors = () => {
+        setLoginError("");
+        setRegisterError("")
+    }
+
     const login = async (username, password) => {
         try {
-            setRegisterError("")
-            setLoginError("");
+            clearAuthErrors()
             const response = await fetch(`http://backend-test-production-2c47.up.railway.app/api/login`, {
                 method: 'POST',
                 headers: {
@@ -29,8 +33,7 @@ const AuthProvider = ({children}) => {
             if(json.token){
                 setToken((prev)=>json.token);
                 setUser(jwtDecode(json.token));
-                setRegisterError("")
-                setLoginError("");
+                clearAuthErrors()
                 return;
             }
 
@@ -45,16 +48,14 @@ const AuthProvider = ({children}) => {
         if(token!==""&&user){
             setUser({});
             setToken("");
-            setRegisterError("")
-            setLoginError("");
+            clearAuthErrors()
             navigate('/login')
         }
     }
 
     const register = async (username, password, confirmedPassword, email) => {
         try {
-            setRegisterError("")
-            setLoginError("");
+            clearAuthErrors()
             const response = await fetch("http://backend-test-production-2c47.up.railway.app/api/register", {
                 method: 'POST',
                 headers: {
@@ -66,8 +67,7 @@ const AuthProvider = ({children}) => {
             
             if(json.pass){
                 navigate('/login')
-                setRegisterError("")
-                setLoginError("");
+                clearAuthErrors()
                 return;
             }
 
@@ -79,7 +79,7 @@ const AuthProvider = ({children}) => {
     }
 
     return(
-        <AuthContext.Provider value={ {user, token, loginError, registerError, login, logout, register} }>
+        <AuthContext.Provider value={ {user, token, loginError, registerError, login, logout, register, clearAuthErrors} }>
             {children}
         </AuthContext.Provider>
     )

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../utilities/AuthProvider";
+import Navbar from "../../components/Navbar/Navbar";
 
 function SinglePost() {
     const [post, setPost] = useState();
@@ -71,28 +72,32 @@ function SinglePost() {
 
     return (
         <>
-            {
-                post ? (
-                    <>
-                        <input placeholder="Your comment" onChange={handleCommentContentChange} value={commentContent}></input>
-                        <button onClick={handleSubmit}>Post comment</button>
-                        <h1>{post.title}</h1>
-                        <p>{post.content}</p>
-                        <h1>Comments</h1>
-                        {
-                            post.comments.map( (comment, index)  => 
-                                <div key={index} style={{style: "1px solid black"}}>
-                                    <p>{comment.author.username} ({comment.createdAt})</p>
-                                    <p>{comment.content}</p>
-                                </div>
-                            )
-                        }
-                    </>
-                ) : (
-                    <></>
-                )
-                
-            }
+            <div className="single-post-container">
+                <Navbar />
+                <div className="single-post-main-area">
+                    {
+                        post ? (
+                            <>
+                                <input placeholder="Your comment" onChange={handleCommentContentChange} value={commentContent}></input>
+                                <button onClick={handleSubmit}>Post comment</button>
+                                <h1>{post.title}</h1>
+                                <p>{post.content}</p>
+                                <h1>Comments</h1>
+                                {
+                                    post.comments.map( (comment, index)  => 
+                                        <div key={index} style={{style: "1px solid black"}}>
+                                            <p>{comment.author.username} ({comment.createdAt})</p>
+                                            <p>{comment.content}</p>
+                                        </div>
+                                    )
+                                }
+                            </>
+                        ) : (
+                            <></>
+                        )
+                    }
+                </div>
+            </div>
         </>
     );
 }

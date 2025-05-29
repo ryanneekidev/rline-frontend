@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Pages
 import Home from './pages/Home/Home';
-import Private from './pages/Private/Private';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Create from './pages/Create/Create';
@@ -19,9 +18,6 @@ function App() {
 			<AuthProvider>
 					<Routes>
 						<Route path='/' element={<Home />} />
-						<Route element={<PrivateRoute />}>
-							<Route path='/private' element={<Private />} />
-						</Route>
 						<Route element={<PrivateRoute />}>
 							<Route path='/create' element={<Create />} />
 						</Route>

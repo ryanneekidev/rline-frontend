@@ -2,6 +2,7 @@ import { useAuth } from "../../utilities/AuthProvider" ;
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
 
 function Create() {
     const auth = useAuth();
@@ -55,10 +56,17 @@ function Create() {
 
     return (
         <>
-            <input placeholder="Title" onChange={handleTitleChange}></input>
-            <input placeholder="Content" onChange={handleContentChange}></input>
-            <input type="checkbox" onChange={handlePostStatusChange}></input>
-            <button onClick={createPost}>Post</button>
+            <div className="create-container">
+                <Navbar />
+                <div className="create-main-area">
+                    <h1 className="create-new-title">Create a New Post</h1>
+                    <h2 className="title">Title</h2>
+                    <input placeholder="Title" className="create-title" onChange={handleTitleChange}></input>
+                    <h2 className="content">Content</h2>
+                    <input placeholder="Content" className="create-content" onChange={handleContentChange}></input>
+                    <button className="create-post-button" onClick={createPost}>Post</button>
+                </div>
+            </div>
         </>
     );
 }

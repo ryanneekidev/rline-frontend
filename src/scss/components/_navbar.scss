@@ -6,25 +6,55 @@
     justify-content: space-between;
     align-items: center;
 
-    background-color: #018E42;
+    background-color: #D81159;
 
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.navbar-left-section{
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right-section{
+    display: flex;
+    align-items: center;
 }
 
 .rline-logo-link{
     font-weight: bold;
     color: #FFFFFF;
     text-decoration: none;
+
+    font-size: 1.5rem;
+    margin-right: 2rem;
 }
 
-.navbar-profile-link, .navbar-create-link, .navbar-login-link, .navbar-register-link{
+.navbar-link{
     color: #FFFFFF;
-    padding-left: 1rem;
+
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    border-radius: 0.5rem;
+
     text-decoration: none;
+
+    font-size: 1.125rem;
 }
 
-.rline-logo-link:visited, .navbar-profile-link:visited, .navbar-create-link:visited, .navbar-login-link:visited, .navbar-register-link:visited{
+.navbar-link:hover{
+    background-color: #DC296A;
+}
+
+.navbar-link:active{
+    background-color: #E0417A;
+}
+
+.navbar-link:visited{
     font-weight: bold;
     color: #FFFFFF;
     text-decoration: none;

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from "../../utilities/AuthProvider";
+import Navbar from '../../components/Navbar/Navbar';
 import { Link } from 'react-router-dom';
 
 function Register () {
@@ -35,7 +36,7 @@ function Register () {
 
     const privateFetch = async () => {
         try {
-            const response = await fetch(`http://backend-test-production-2c47.up.railway.app/api/private`, {
+            const response = await fetch(`http://139.59.224.208:3000/api/private`, {
                 method: 'GET',
                 headers: {
                     "Content-Type": "application/json",
@@ -52,36 +53,35 @@ function Register () {
     return (
         <>
             <div className='register-container'>
-                <div className="brand-container">
-                    <p className="branding">Weclome to RLine!</p>
-                    <p className="branding-subtitle">Create your Account</p>
-                </div>
-                <div className="register-card-container">
-                    <div className="register-card">
-                        <form onSubmit={handleSubmit}>
-                            <div className="register-card-credentials-container">
-                                <label name="register-card-credentials-username-field" htmlFor="register-card-credentials-username-field" className="register-card-credentials-username-field-label">Username</label>
-                                <input minLength="8" maxLength="16" onChange={handleUsernameChange} name="register-card-credentials-username-field" id="register-card-credentials-username-field" placeholder="Enter your username" type="text"></input>
-                                <label name="register-card-credentials-username-field" htmlFor="register-card-credentials-username-field" className="register-card-credentials-username-field-label">Email</label>
-                                <input onChange={handleEmailChange} name="register-card-credentials-username-field" id="register-card-credentials-username-field" placeholder="Enter your email" type="email"></input>
-                                <label name="register-card-credentials-password-field" htmlFor="register-card-credentials-password-field" className="register-card-credentials-password-field-label">Password</label>
-                                <input onChange={handlePasswordChange} name="register-card-credentials-password-field" id="register-card-credentials-password-field" placeholder="Enter your password" type="password"></input>
-                                <label name="register-card-credentials-confirm-password-field" htmlFor="register-card-credentials-password-field" className="register-card-credentials-confirm-password-field-label">Confirm Password</label>
-                                <input onChange={handleConfirmedPasswordChange} name="register-card-credentials-confirm-password-field" id="register-card-credentials-password-field" placeholder="Enter your password" type="password"></input>
-                            </div>
-                            <div className="register-card-button-container">
-                                <p className="login-account-redirect">Already have an account? <Link to="/login">Login!</Link></p>
-                                <button className="register-card-button" type="submit">Create</button>
-                            </div>
-                        </form>
-                    </div>
-                    {auth.registerError !== "" ? 
-                        (
-                            <div className="register-card-error-card">{auth.registerError}</div>
+                <Navbar />
+                <div className='register-container-main-area'>
+                    {
+                        auth.registerError !== "" ? (
+                            <div className="error-card">{auth.registerError}</div>
                         ) : (
                             <></>
                         )
-                    } 
+                    }
+                    <p className="register-header">Create Your RLine Account</p>
+                    <div className='register-card'>
+                        <form className='register-form' onSubmit={handleSubmit}>
+                            <div className="register-card-creds-section">
+                                <label htmlFor="register-card-username-field" className='register-card-username-label'>Username</label>
+                                <input type='text' id="register-card-username-field" required={true} onChange={handleUsernameChange}></input>
+                                <label htmlFor="register-card-email-field" className='register-card-email-label'>Email Address</label>
+                                <input type='email' id="register-card-email-field" required={true} onChange={handleEmailChange}></input>
+                                <label htmlFor="register-card-password-field" className='register-card-password-label'>Password</label>
+                                <input type='password' id="register-card-password-field" required={true} onChange={handlePasswordChange}></input>
+                                <label htmlFor="register-card-confirm-password-label" className='register-card-confirm-password-label'>Confirm Password</label>
+                                <input type='password' id="register-card-confirm-password-field" required={true} onChange={handleConfirmedPasswordChange}></input>
+                            </div>
+                            <button className='register-card-submit-button' type='submit'>Sign Up</button>
+                        </form>
+                    </div>
+                    <div className="register-bottom-container">
+                        <p>Already have an account?</p>
+                        <Link to="/login" className="login-redirect" onClick={auth.clearAuthErrors}>Sign In Instead!</Link>
+                    </div>
                 </div>
             </div>
         </>
