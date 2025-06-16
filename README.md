@@ -1,12 +1,7 @@
-# React + Vite
+# RLine
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> This project is the front end for the RLine project. Built using React, React Router and SCSS.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+RLine is a practice project to practice building full stack application end to end.
+It currently serves as a small and barebones social media application that allows users to create accounts with their email address, post text messages which are visible to other users who can interact with them by liking them and posting comments under them.
+The name is inspired by "Line", a popular text messenger in Japan and South Korea. It's a combination of Line and the first letter of my name.
