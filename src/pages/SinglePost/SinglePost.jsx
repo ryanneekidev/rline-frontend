@@ -41,7 +41,7 @@ function SinglePost() {
 
     const postComment = async () => {
         try {
-            if (auth.token !== '') {
+            if (auth.token !== '' && commentContent !== '') {
                 const response = await fetch("https://api.rline.ryanneeki.xyz/comment", {
                     method: 'POST',
                     headers: {

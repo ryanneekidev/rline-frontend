@@ -95,7 +95,7 @@ function Home() {
                             auth.token ? (
                                 <h1 className="welcome-header">Welcome back, {auth.user.username}</h1>
                             ) : (
-                                <h1 className="welcome-header">Currenly browsing as a guest. Please sign in to like and post comments.</h1>
+                                <></>
                             )
                         }
                         <h1 className="latest-posts">Latest posts</h1>
