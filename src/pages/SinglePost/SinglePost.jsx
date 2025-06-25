@@ -41,22 +41,24 @@ function SinglePost() {
 
     const postComment = async () => {
         try {
-            if (auth.token !== '' && commentContent !== '') {
-                const response = await fetch("https://api.rline.ryanneeki.xyz/comment", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: `userId=${auth.user.id}&postId=${post.id}&content=${commentContent}`
-                })
-                const res = await response.json()
-                if (res) {
-                    console.log(res)
-                    getPost(searchParams.get("postId"))
-                    setCommentContent((prev) => "")
-                    return;
+            if (auth.token !== '') {
+                if (commentContent !== '') {
+                    const response = await fetch("https://api.rline.ryanneeki.xyz/comment", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: `userId=${auth.user.id}&postId=${post.id}&content=${commentContent}`
+                    })
+                    const res = await response.json()
+                    if (res) {
+                        console.log(res)
+                        getPost(searchParams.get("postId"))
+                        setCommentContent((prev) => "")
+                        return;
+                    }
+                    throw new Error(res.message)
                 }
-                throw new Error(res.message)
             } else {
                 navigate('/login');
             }
