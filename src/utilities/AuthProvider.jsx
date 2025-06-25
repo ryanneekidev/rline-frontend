@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 
 const AuthContext = createContext();
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState({});
     const [token, setToken] = useState("");
 
@@ -21,7 +21,7 @@ const AuthProvider = ({children}) => {
     const login = async (username, password) => {
         try {
             clearAuthErrors()
-            const response = await fetch(`https://api.ryanneeki.xyz/login`, {
+            const response = await fetch(`https://api.rline.ryanneeki.xyz/login`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
@@ -29,9 +29,9 @@ const AuthProvider = ({children}) => {
                 body: `username=${username}&password=${password}`
             });
             const json = await response.json();
-            
-            if(json.token){
-                setToken((prev)=>json.token);
+
+            if (json.token) {
+                setToken((prev) => json.token);
                 setUser(jwtDecode(json.token));
                 clearAuthErrors()
                 return;
@@ -45,7 +45,7 @@ const AuthProvider = ({children}) => {
     }
 
     const logout = () => {
-        if(token!==""&&user){
+        if (token !== "" && user) {
             setUser({});
             setToken("");
             clearAuthErrors()
@@ -56,7 +56,7 @@ const AuthProvider = ({children}) => {
     const register = async (username, password, confirmedPassword, email) => {
         try {
             clearAuthErrors()
-            const response = await fetch("https://api.ryanneeki.xyz/register", {
+            const response = await fetch("https://api.rline.ryanneeki.xyz/register", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -64,8 +64,8 @@ const AuthProvider = ({children}) => {
                 body: `username=${username}&password=${password}&confirmedPassword=${confirmedPassword}&email=${email}`
             })
             const json = await response.json();
-            
-            if(json.pass){
+
+            if (json.pass) {
                 navigate('/login')
                 clearAuthErrors()
                 return;
@@ -78,8 +78,8 @@ const AuthProvider = ({children}) => {
         }
     }
 
-    return(
-        <AuthContext.Provider value={ {user, token, loginError, registerError, login, logout, register, clearAuthErrors} }>
+    return (
+        <AuthContext.Provider value={{ user, token, loginError, registerError, login, logout, register, clearAuthErrors }}>
             {children}
         </AuthContext.Provider>
     )

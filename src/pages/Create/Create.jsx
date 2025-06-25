@@ -1,4 +1,4 @@
-import { useAuth } from "../../utilities/AuthProvider" ;
+import { useAuth } from "../../utilities/AuthProvider";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -38,7 +38,7 @@ function Create() {
 
     const createPost = async () => {
         if (post.title !== "" && post.content !== "") {
-            const response = await fetch('https://api.ryanneeki.xyz/posts', {
+            const response = await fetch('https://api.rline.ryanneeki.xyz/posts', {
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer ' + auth.token,

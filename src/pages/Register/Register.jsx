@@ -3,7 +3,7 @@ import { useAuth } from "../../utilities/AuthProvider";
 import Navbar from '../../components/Navbar/Navbar';
 import { Link } from 'react-router-dom';
 
-function Register () {
+function Register() {
     const auth = useAuth();
 
     const register = auth.register;
@@ -36,7 +36,7 @@ function Register () {
 
     const privateFetch = async () => {
         try {
-            const response = await fetch(`http://139.59.224.208:3000/api/private`, {
+            const response = await fetch(`http://api.rline.ryanneeki.xyz/api/private`, {
                 method: 'GET',
                 headers: {
                     "Content-Type": "application/json",

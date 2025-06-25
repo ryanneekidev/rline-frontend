@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Navbar from "../../components/Navbar/Navbar"
 import Card from "../../components/Card/Card"
 
-function Home () {
+function Home() {
     const auth = useAuth();
 
     const [posts, setPosts] = useState([]);
@@ -13,7 +13,7 @@ function Home () {
 
     const privateFetch = async () => {
         try {
-            const response = await fetch(`https://api.ryanneeki.xyz/private`, {
+            const response = await fetch(`https://api.rline.ryanneeki.xyz/private`, {
                 method: 'GET',
                 headers: {
                     "Content-Type": "application/json",
@@ -28,7 +28,7 @@ function Home () {
     }
 
     const getPosts = async () => {
-        const response = await fetch(`https://api.ryanneeki.xyz/posts`, {
+        const response = await fetch(`https://api.rline.ryanneeki.xyz/posts`, {
             method: 'GET',
         })
         const res = await response.json();
@@ -38,7 +38,7 @@ function Home () {
 
     const likePost = async (postId) => {
         if (auth.token !== '') {
-            const response = await fetch("https://api.ryanneeki.xyz/posts/like", {
+            const response = await fetch("https://api.rline.ryanneeki.xyz/posts/like", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -57,7 +57,7 @@ function Home () {
 
     const dislikePost = async (postId, likeId) => {
         if (auth.token !== '') {
-            const response = await fetch("https://api.ryanneeki.xyz/posts/dislike", {
+            const response = await fetch("https://api.rline.ryanneeki.xyz/posts/dislike", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -100,7 +100,7 @@ function Home () {
                         }
                         <h1 className="latest-posts">Latest posts</h1>
                         {
-                            posts.map( (post, index) =>
+                            posts.map((post, index) =>
                                 auth.token ? (
                                     auth.user.like.some(like => like.postId === post.id) ? (
                                         <Card key={index} postTitle={post.title} postContent={post.content} postAuthor={post.author.username} createdAt={post.createdAt} postStatus={post.postStatus} commentText="Comment" likeText="Liked" likeCount={post.likes} commentCount={post.comments.length} commentAction={() => navigateToPost(post.id)} likeAction={() => dislikePost(post.id, auth.user.like.find((like) => like.postId === post.id).id)} />

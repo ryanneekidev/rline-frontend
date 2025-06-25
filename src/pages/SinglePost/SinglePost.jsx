@@ -21,7 +21,7 @@ function SinglePost() {
 
     const getPost = async (postId) => {
         try {
-            const response = await fetch("https://api.ryanneeki.xyz/post", {
+            const response = await fetch("https://api.rline.ryanneeki.xyz/post", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -29,7 +29,7 @@ function SinglePost() {
                 body: `postId=${postId}`
             })
             const res = await response.json()
-            if(res.post){
+            if (res.post) {
                 setPost(res.post)
                 return;
             }
@@ -42,7 +42,7 @@ function SinglePost() {
     const postComment = async () => {
         try {
             if (auth.token !== '') {
-                const response = await fetch("https://api.ryanneeki.xyz/comment", {
+                const response = await fetch("https://api.rline.ryanneeki.xyz/comment", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -50,7 +50,7 @@ function SinglePost() {
                     body: `userId=${auth.user.id}&postId=${post.id}&content=${commentContent}`
                 })
                 const res = await response.json()
-                if(res){
+                if (res) {
                     console.log(res)
                     getPost(searchParams.get("postId"))
                     setCommentContent((prev) => "")
@@ -66,7 +66,7 @@ function SinglePost() {
     }
 
     const handleSubmit = () => {
-        if (post)  {
+        if (post) {
             postComment();
         }
     }
@@ -99,7 +99,7 @@ function SinglePost() {
                                 </div>
                                 <h1 className="comments-title">Comments</h1>
                                 {
-                                    post.comments.map( (comment, index)  => 
+                                    post.comments.map((comment, index) =>
                                         <div key={index} className="post-container">
                                             <div className="card-metadata-section">
                                                 <p className="card-post-author">{comment.author.username}</p>
