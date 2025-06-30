@@ -63,7 +63,7 @@ function Create() {
                     <h2 className="title">Title</h2>
                     <input placeholder="Title" className="create-title" onChange={handleTitleChange}></input>
                     <h2 className="content">Content</h2>
-                    <input placeholder="Content" className="create-content" onChange={handleContentChange}></input>
+                    <textarea placeholder="Content" className="create-content" onChange={handleContentChange}></textarea>
                     <button className="create-post-button" onClick={createPost}>Post</button>
                 </div>
             </div>

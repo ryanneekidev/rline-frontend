@@ -28,6 +28,13 @@
     font-size: 1rem;
 }
 
+.create-content {
+    padding-top: 0.75rem;
+    resize: vertical;
+    font-family: Roboto;
+    min-height: fit-content;
+}
+
 .create-title:focus, .create-content:focus{
     outline: none;
     background-color: #EBEBEB;
