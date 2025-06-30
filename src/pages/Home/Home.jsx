@@ -33,7 +33,6 @@ function Home() {
         })
         const res = await response.json();
         setPosts(res)
-        console.log(res)
     }
 
     const likePost = async (postId) => {
