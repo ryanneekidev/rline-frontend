@@ -43,6 +43,12 @@
     padding: 9px;
 }
 
+@media screen and (max-width: 600px) {
+  .register-card {
+    width: 300px;
+  }
+}
+
 .register-card-creds-section{
     display: flex;
     flex-direction: column;
