@@ -139,6 +139,17 @@
     margin-top: 70px;
 }
 
+
+@media screen and (max-height: 700px) {
+  .register-header {
+    margin-bottom: 30px;
+  }
+
+  .register-bottom-container{
+    margin-top: 30px;
+  }
+}
+
 .login-redirect{
     color: #D81159;
     text-decoration: none;
