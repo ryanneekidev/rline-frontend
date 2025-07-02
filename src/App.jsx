@@ -16,19 +16,19 @@ function App() {
 	return (
 		<BrowserRouter>
 			<AuthProvider>
-					<Routes>
-						<Route path='/' element={<Home />} />
-						<Route element={<PrivateRoute />}>
-							<Route path='/create' element={<Create />} />
-						</Route>
-						<Route path='/posts' element={<SinglePost />} />
-						<Route element={<PublicRoute />}>
-							<Route path='/login' element={<Login />} />
-						</Route>
-						<Route element={<PublicRoute />}>
-							<Route path='/register' element={<Register />} />
-						</Route>
-					</Routes>
+				<Routes>
+					<Route path='/' element={<Home />} />
+					<Route element={<PrivateRoute />}>
+						<Route path='/create' element={<Create />} />
+					</Route>
+					<Route path='/posts' element={<SinglePost />} />
+					<Route element={<PublicRoute />}>
+						<Route path='/login' element={<Login />} />
+					</Route>
+					<Route element={<PublicRoute />}>
+						<Route path='/register' element={<Register />} />
+					</Route>
+				</Routes>
 			</AuthProvider>
 		</BrowserRouter>
 	)

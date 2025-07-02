@@ -12,6 +12,7 @@
 	},
 	"dependencies": {
 		"axios": "^1.9.0",
+		"body-scroll-lock-upgrade": "^1.1.0",
 		"dayjs": "^1.11.13",
 		"feather-icons": "^4.29.2",
 		"jwt-decode": "^4.0.0",
